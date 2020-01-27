@@ -6,15 +6,63 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 
-def main():
-    hero_health = 10
-    hero_power = 5
-    goblin_health = 6
-    goblin_power = 2
+import random 
+class Character:
+    def __init__(self, name, health, power, probability):
+        self.health=health
+        self.power=power
+        self.name=name
+        self.probability = probability
+   
+    def attack(self, other_character):
+        if(random.random()<=self.probability):
+            damage=self.power*2
+            print("Goku did double damage ")
+        else:
+            damage=self.power*1
+        other_character.health -= damage
+        print(f'{self.name} does this much {damage}')
+    def Alive (self):
+        if(self.health>0):
+            return True
+        else:
+            return False
+    
+    def print_status(self):
+        print("{} has {} health and {} power.".format(self.name, self.health, self.power))      
 
-    while goblin_health > 0 and hero_health > 0:
-        print("You have {} health and {} power.".format(hero_health, hero_power))
-        print("The goblin has {} health and {} power.".format(goblin_health, goblin_power))
+    def theHealth(self):
+        if (random.random()<=self.probability):
+            characterHealth=
+
+class Hero(Character):
+    def __init__(self, name, health, power, probability):
+        super().__init__(name, health, power, probability)
+
+
+class Goblin(Character):
+    def __init__(self, name, health, power, probability):
+        super().__init__(name, health, power, probability)
+
+class theMedic(Character):
+    def __init__(self, name, health, power, probability):
+        super().__init__(name, health, power, probability)
+class Shadow(Character):
+    def shadow_health:
+        if(random.random() <= self.probability):
+            self.health+
+Goku=Hero ("Goku", 15, 14, 0.2)
+Cell=Goblin ("Cell", 20, 13, .0)
+Medic=theMedic ("korin", 25, 20, 0.2)
+shadow = Shadow("shadow" 1, 20, .1)
+
+
+
+
+def main():
+    while Cell.Alive() and Goku.Alive():
+        Goku.print_status()
+        Cell.print_status()
         print()
         print("What do you want to do?")
         print("1. fight goblin")
@@ -24,9 +72,8 @@ def main():
         raw_input = input()
         if raw_input == "1":
             # Hero attacks goblin
-            goblin_health -= hero_power
-            print("You do {} damage to the goblin.".format(hero_power))
-            if goblin_health <= 0:
+            Goku.attack(Cell)
+            if Cell.health <= 0:
                 print("The goblin is dead.")
         elif raw_input == "2":
             pass
@@ -36,11 +83,12 @@ def main():
         else:
             print("Invalid input {}".format(raw_input))
 
-        if goblin_health > 0:
+        if Cell.health > 0:
             # Goblin attacks hero
-            hero_health -= goblin_power
-            print("The goblin does {} damage to you.".format(goblin_power))
-            if hero_health <= 0:
-                print("You are dead.")
+           Cell.attack(Goku)
+        if Goku.health <= 0:
+            print("You are dead.")
 
 main()
+
+
