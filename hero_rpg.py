@@ -90,11 +90,14 @@ class Zombie(Character):
         #     if(other_character.name == "zombie"):
         #         if(self.health<0):
         #             return True
+
+
 Goku=Hero ("Goku", 15, 14, 0.2, 0.0,)
 Cell=Goblin ("Cell", 20, 10, .0, 0.0,)
 Medic=theMedic ("korin", 25, 5, 0.2, 0.0,)
 shadow = Shadow("shadow", 1, 20, .1, 0.9,)
 zombie = Zombie("zombie", 10, 10, 0.0, 0.0,)
+
 
 
 
@@ -108,6 +111,7 @@ def main():
         print("4. fight zombie")
         print("5. do nothing")
         print("6. flee")
+        print("7. item store")
         print("> ", end=' ')
         raw_input = input()
         if raw_input == "1":
@@ -162,8 +166,18 @@ def main():
                 print("i ran! ")
             else: 
                 print("He is still alive! ")
-            
-
+        elif raw_input == "7":
+            the_store()
+    def the_store(self):
+        buy = print(int(input("What would you like to buy? Enter, 1. SuperTonic, 2. Armor, 3. Evade")))
+        if(buy == 1):
+            recuperation = self.health + 10
+            return(recuperation)
+        elif(buy == 2):
+            self.armor += 2
+            return(self.armor)
+        elif(buy == 3):
+            self.Evade += 2
         
 
 # zombie.attack(Goku)
